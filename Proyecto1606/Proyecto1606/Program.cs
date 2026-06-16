@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Data;
+using System.Numerics;
 
 namespace Proyecto1606
 {
@@ -67,15 +68,88 @@ namespace Proyecto1606
             Console.WriteLine($"El número {numero} tiene {centenas} centenas, {decenas} decenas y {unidades} unidades.");
         }
 
+        static void Ejercicio5()
+        {
+            Console.WriteLine("Dime tu fecha de nacimiento por orden de día, mes y año: ");
+            int numSuerte = Convert.ToInt32(Console.ReadLine()) + Convert.ToInt32(Console.ReadLine())
+                + Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Tu número de la suerte es: {numSuerte / 1000 + (numSuerte % 1000) / 100
+                + (numSuerte % 100) / 10 + numSuerte % 10}");
+        }
+        static void Ejercicio5b()
+        {
+            Console.WriteLine("Vamos a calcular tu número de la suerte: ");
+            Console.WriteLine("Introduce tu día de nacimiento: ");
+            int dia = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce tu mes de nacimiento: ");
+            int mes = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Introduce tu año de nacimiento: ");
+            int anyo = Convert.ToInt32(Console.ReadLine());
+            int numSuerte = dia + mes + anyo;
+            Console.WriteLine($"Tu número de la suerte es: {numSuerte / 1000 + (numSuerte % 1000) / 100
+                + (numSuerte % 100) / 10 + numSuerte % 10}");
+        }
+        static void Ejercicio5c()
+        {
+            Console.WriteLine("Dime tu fecha de nacimiento por orden de día, mes y año (separados por espacios): ");
+            string[] fecha = Console.ReadLine()!.Split(' ');  // ["12", "06", "1990"]
+            int dia = Convert.ToInt32(fecha[0]);
+            int mes = Convert.ToInt32(fecha[1]);
+            int anyo = Convert.ToInt32(fecha[2]);
+            int numSuerte = dia + mes + anyo;
+            Console.WriteLine($"Tu número de la suerte es: {numSuerte / 1000 + (numSuerte % 1000) / 100
+                + (numSuerte % 100) / 10 + numSuerte % 10}");
+        }
+        static void Ejercicio5d()
+        {
+            Console.WriteLine("Dime tu fecha de nacimiento por orden de día, mes y año (dd/mm/aaaa): ");
+            string[] fecha = Console.ReadLine()!.Split('/');  // ["12", "06", "1990"]
+            int dia = Convert.ToInt32(fecha[0]);
+            int mes = Convert.ToInt32(fecha[1]);
+            int anyo = Convert.ToInt32(fecha[2]);
+            int numSuerte = dia + mes + anyo;
+            Console.WriteLine($"Tu número de la suerte es: {numSuerte / 1000 + (numSuerte % 1000) / 100
+                + (numSuerte % 100) / 10 + numSuerte % 10}");
+        }
+
+        static void Ejercicio5e()
+        {
+            Console.WriteLine("Dime tu fecha de nacimiento por orden de día, mes y año (dd/mm/aaaa): ");
+            DateTime fecha = Convert.ToDateTime(Console.ReadLine());
+            int numSuerte = fecha.Day + fecha.Month + fecha.Year;
+            Console.WriteLine($"Tu número de la suerte es: {numSuerte / 1000 + (numSuerte % 1000) / 100
+                + (numSuerte % 100) / 10 + numSuerte % 10}");
+        }
+
+        static void Ejercicio6()
+        {
+            Console.WriteLine("Introduce tu edad para saber cuantos tendras en 15 años:");
+            string edad = Console.ReadLine()!;
+            Console.WriteLine($"Tu edad dentro de 15 años sera: {int.Parse(edad) + 15} años");
+
+        }
+
+        static void PruebaCaracteres()
+        {
+            Console.WriteLine("Gano 1000 €");
+        }
+
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             //Ejercicio1();
             //Ejercicio2();
             //Ejercicio3();
             //Ejercicio4();
             //Ejercicio4b();
             //Ejercicio4c();
-            Ejercicio4d();
+            //Ejercicio4d();
+            //Ejercicio5();
+            //Ejercicio5b();
+            //Ejercicio5c();
+            //Ejercicio5d();
+            //Ejercicio5e();
+            PruebaCaracteres();
         }
     }
 }
