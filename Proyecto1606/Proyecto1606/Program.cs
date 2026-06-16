@@ -134,6 +134,36 @@ namespace Proyecto1606
             Console.WriteLine("Gano 1000 €");
         }
 
+        static void Ejercicio7()
+        {
+            Console.WriteLine("Vas a decirme tres productos y sus precios (Con dos decimales).");
+            Console.Write("Nombre del primer producto: ");
+            string prod1 = Console.ReadLine();
+            Console.Write("Precio del primer producto: ");
+            double prod1pre = Double.Parse(Console.ReadLine());
+            Console.Write("Nombre del segundo producto: ");
+            string prod2 = Console.ReadLine();
+            Console.Write("Precio del segundo producto: ");
+            double prod2pre = Double.Parse(Console.ReadLine());
+            Console.Write("Nombre del tercer producto: ");
+            string prod3 = Console.ReadLine();
+            Console.Write("Precio del tercer producto: ");
+            double prod3pre = Double.Parse(Console.ReadLine());
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"{"NOMBRE",-15}{"PRECIO",12}{"CON IVA",13}");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"{prod1,-15}{prod1pre,12:F2}€{prod1pre * 1.21,12:F2}€");
+            Console.WriteLine($"{prod2,-15}{prod2pre,12:F2}€{prod2pre * 1.21,12:F2}€");
+            Console.WriteLine($"{prod3,-15}{prod3pre,12:F2}€{prod3pre * 1.21,12:F2}€");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"{"NOMBRE".PadRight(15)}{"PRECIO".PadLeft(12)}{"CON IVA".PadLeft(13)}");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine($"{prod1.PadRight(15)}{prod1pre,12:F2}€{prod1pre * 1.21,12:F2}€");
+            Console.WriteLine($"{prod2.PadRight(15)}{prod2pre,12:F2}€{prod2pre * 1.21,12:F2}€");
+            Console.WriteLine($"{prod3.PadRight(15)}{prod3pre,12:F2}€{prod3pre * 1.21,12:F2}€");
+        }
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -149,7 +179,8 @@ namespace Proyecto1606
             //Ejercicio5c();
             //Ejercicio5d();
             //Ejercicio5e();
-            PruebaCaracteres();
+            //PruebaCaracteres();
+            Ejercicio7();
         }
     }
 }
