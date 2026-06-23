@@ -1,0 +1,283 @@
+﻿using System.Diagnostics;
+
+namespace EstructurasControl
+{
+    internal class Program
+    {
+
+        static void EjemploIf()
+        {
+            Console.Write("Dime tu nombre: ");
+            string nombre = Console.ReadLine();
+            if (nombre == "")
+            {
+                Console.WriteLine("¡El nombre no puede estar vacío!");
+            }
+            Console.WriteLine($"Hola {nombre}");
+        }
+
+        static void EjemploIfElse()
+        {
+            Console.Write("Dime tu nombre: ");
+            string nombre = Console.ReadLine();
+            if (nombre == "")
+            {
+                Console.WriteLine("¡El nombre no puede estar vacío!");
+            }
+            else
+            {
+                Console.WriteLine($"Hola {nombre}");
+            }
+            Console.WriteLine("Fin del programa");
+        }
+
+        static void EjemploIfElseIfElse()
+        {
+            Console.Write("Dime el prefijo de tu país: ");
+            // Así se convierte una cadena a número
+            int prefijo = Int32.Parse(Console.ReadLine());
+            if (prefijo == 34)
+            {
+                Console.WriteLine("Tu país es España");
+            }
+            else if (prefijo == 49)
+            {
+                Console.WriteLine("Tu país es Alemania");
+            }
+            else if (prefijo == 33)
+            {
+                Console.WriteLine("Tu país es Francia");
+            }
+            else
+            {
+                Console.WriteLine("No sé cual es tu país...");
+            }
+            Console.WriteLine("Fin del programa");
+        }
+
+
+        static void EjemploSwitch()
+        {
+            Console.Write("Dime el prefijo de tu país: ");
+            // Así se convierte una cadena a número
+            int prefijo = Int32.Parse(Console.ReadLine());
+            switch (prefijo)
+            {
+                case 34:
+                    Console.WriteLine("Tu país es España");
+                    break;
+                case 49:
+                    Console.WriteLine("Tu país es Alemania");
+                    break;
+                case 33:
+                    Console.WriteLine("Tu país es Francia");
+                    break;
+                default:
+                    Console.WriteLine("No sé cual es tu país...");
+                    break;
+            }
+            Console.WriteLine("Fin del programa");
+        }
+
+        static void EjemploSwitchConString()
+        {
+            Console.Write("Dime el nombre de tu país: ");
+            string pais = Console.ReadLine();
+            switch (pais)
+            {
+                case "España":
+                    Console.WriteLine("Tu prefijo es 34");
+                    break;
+                case "Alemania":
+                    Console.WriteLine("Tu prefijo es 49");
+                    break;
+                case "Francia":
+                    Console.WriteLine("Tu prefijo es 33");
+                    break;
+                default:
+                    Console.WriteLine("No sé cual es tu país...");
+                    break;
+            }
+            Console.WriteLine("Fin del programa");
+        }
+
+        static void EjemploSwitchModerno()
+        {
+            int dia = 3;
+
+            string nombreDia = dia switch  // Disponible desde C# 8.0, pero en C# 14.0 se puede usar con más características
+            {
+                1 => "Lunes",
+                2 => "Martes",
+                3 => "Miércoles",
+                4 => "Jueves",
+                5 => "Viernes",
+                6 => "Sábado",
+                7 => "Domingo",
+                _ => "Día inválido"   // _ es el caso por defecto (como default)
+            };
+            Console.WriteLine(nombreDia);  // "Miércoles"
+        }
+
+        static void EjemploAntriorSwitchClasico()
+        {
+            int dia = 3;
+            string nombreDia = "";
+            switch (dia)
+            {
+                case 1:
+                    nombreDia = "Lunes";
+                    break;
+                case 2:
+                    nombreDia = "Martes";
+                    break;
+                case 3:
+                    nombreDia = "Miércoles";
+                    break;
+                case 4:
+                    nombreDia = "Jueves";
+                    break;
+                case 5:
+                    nombreDia = "Viernes";
+                    break;
+                case 6:
+                    nombreDia = "Sábado";
+                    break;
+                case 7:
+                    nombreDia = "Domingo";
+                    break;
+                default:
+                    nombreDia = "Día inválido";
+                    break;
+            }
+            Console.WriteLine(nombreDia);  // "Miércoles"
+        }
+
+        static void EjemploSwitchPatternMatching()
+        {
+            double nota = 7.5;
+
+            string calificacion = nota switch  // Pattern matching con switch expressions, disponible desde C# 8.0
+            {
+                < 0 or > 10 => "Nota inválida",
+                < 5 => "Suspenso",
+                < 6 => "Aprobado",
+                < 7 => "Bien",
+                < 9 => "Notable",
+                <= 10 => "Sobresaliente",
+                _ => "Error"
+            };
+
+            Console.WriteLine($"Nota {nota}: {calificacion}");  // "Nota 7.5: Notable"
+        }
+
+        // Switch pattern matching con tipos y tuplas, disponible desde C# 8.0
+        // En C# 14.0 se puede usar con más características
+        // Estos ejemplos solo para aquellos que quieran aprender más sobre C# 14.0 y sus características avanzadas
+        // Solo para curiosos y desarrolladores avanzados
+        static void EjemploSwitchPatternMatchingConTipos()
+        {
+            object obj = 42; // Puede ser cualquier tipo
+            string resultado = obj switch
+            {
+                int i => $"Es un entero: {i}",
+                double d => $"Es un doble: {d}",
+                string s => $"Es una cadena: {s}",
+                null => "Es nulo",
+                _ => "Tipo desconocido"
+            };
+            Console.WriteLine(resultado);  // "Es un entero: 42"
+        }
+
+        static void EjemploSwitchPatternMatchingConTuplas()
+        {
+            (int, int) punto = (3, 4);
+            string cuadrante = punto switch
+            {
+                (0, 0) => "Origen",
+                (_, 0) => "Eje X",
+                (0, _) => "Eje Y",
+                (var x, var y) when x > 0 && y > 0 => "Primer cuadrante",
+                (var x, var y) when x < 0 && y > 0 => "Segundo cuadrante",
+                (var x, var y) when x < 0 && y < 0 => "Tercer cuadrante",
+                (var x, var y) when x > 0 && y < 0 => "Cuarto cuadrante",
+                _ => "Desconocido"
+            };
+            Console.WriteLine($"El punto {punto} está en: {cuadrante}"); // "El punto (3, 4) está en: Primer cuadrante"
+        }
+
+        // Ejemplos de ternarias
+        static void EjemploTernaria()
+        {
+            int edad = 20;
+            string mensaje = (edad >= 18) ? "Eres mayor de edad" : "Eres menor de edad";
+            Console.WriteLine(mensaje); // "Eres mayor de edad"
+        }
+
+        static void EjemploAnteriorSinTernaria()
+        {
+            int edad = 20;
+            string mensaje;
+            if (edad >= 18)
+            {
+                mensaje = "Eres mayor de edad";
+            }
+            else
+            {
+                mensaje = "Eres menor de edad";
+            }
+            Console.WriteLine(mensaje); // "Eres mayor de edad"
+        }
+
+        static void EjemploTernariaImpresion()
+        {
+            int num = 23;
+            Console.WriteLine($"{num} es {(num % 2 == 0 ? "par" : "impar")}");
+        }
+
+        static void EjemploAnteriorSinTernariaImpresion()
+        {
+            int num = 23;
+            if (num % 2 == 0)
+            {
+                Console.WriteLine($"{num} es par");
+            }
+            else
+            {
+                Console.WriteLine($"{num} es impar");
+            }
+        }
+
+        static void EjemploTernariaPlurales()
+        {
+            int euros = 1;
+            Console.WriteLine($"{(euros == 1 ? "Es" : "Son")} {euros} euro{(euros == 1 ? "" : "s")}");
+        }
+
+        static void EjemploAnteriorSinTernariaPlurales()
+        {
+            int euros = 1;
+            if (euros == 1)
+            {
+                Console.WriteLine($"Es {euros} euro");
+            }
+            else
+            {
+                Console.WriteLine($"Son {euros} euros");
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            //EjemploIf();
+            //EjemploIfElse();
+            //EjemploIfElseIfElse();
+            //EjemploSwitch();
+            //EjemploSwitchConString();
+            //EjemploSwitchModerno();
+            //EjemploTernaria();
+            EjemploTernariaPlurales();
+        }
+    }
+}

@@ -164,6 +164,29 @@ namespace Proyecto1606
             Console.WriteLine($"{prod3.PadRight(15)}{prod3pre,12:F2}€{prod3pre * 1.21,12:F2}€");
         }
 
+        static void Ejercicio8()
+        {
+            Console.WriteLine("Intoduce 3 numeros para realizar la suma");
+            string num1 = Console.ReadKey(true).KeyChar.ToString();
+            string num2 = Console.ReadKey(true).KeyChar.ToString();
+            string num3 = Console.ReadKey(true).KeyChar.ToString();
+            Console.WriteLine($"Has escrito {num1}, {num2} y {num3} y la suma da : {int.Parse(num1) + int.Parse(num2) + int.Parse(num3)}");
+        }
+
+        static void Ejercicio9()
+        {
+            Console.Write("Introduce tu nombre: ");
+            string nombre = Console.ReadLine() ?? string.Empty;
+            Console.Write("Introduce tu edad: ");
+            string edad = Console.ReadLine() ?? string.Empty;
+            //Console.WriteLine($"Estos son tus datos\n\tnombre: {nombre}\n\tedad: {edad}");
+            Console.WriteLine($"""
+                Estos son tus datos
+                    nombre: {nombre}
+                    edad: {edad}
+                """);
+        }
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -180,7 +203,9 @@ namespace Proyecto1606
             //Ejercicio5d();
             //Ejercicio5e();
             //PruebaCaracteres();
-            Ejercicio7();
+            //Ejercicio7();
+            //Ejercicio8();
+            Ejercicio9();
         }
     }
 }
