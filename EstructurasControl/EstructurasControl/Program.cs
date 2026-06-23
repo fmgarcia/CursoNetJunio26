@@ -268,6 +268,45 @@ namespace EstructurasControl
         }
 
 
+        static void EjemploWhile()
+        {
+            int total = 0;
+            while (total < 100)
+            {
+                Console.Write($"Escribe un número (acumulado: {total}): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                total += num;
+            }
+            Console.WriteLine($"El total acumulado ha sido {total}");
+        }
+        static void EjemploDoWhile()
+        {
+            int total = 0;
+            do
+            {
+                Console.Write($"Escribe un número (acumulado: {total}): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                total += num;
+            } while (total < 100);
+            Console.WriteLine($"El total acumulado ha sido {total}");
+        }
+
+        static void EjemploFor()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"El valor de i es {i}");
+            }
+        }
+
+        static void EjemploFor2()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"El valor de i es {i}");
+            }
+        }
+
         static void Main(string[] args)
         {
             //EjemploIf();
@@ -277,7 +316,11 @@ namespace EstructurasControl
             //EjemploSwitchConString();
             //EjemploSwitchModerno();
             //EjemploTernaria();
-            EjemploTernariaPlurales();
+            //EjemploTernariaPlurales();
+            //EjemploWhile();
+            //EjemploDoWhile();
+            //EjemploFor();
+            EjemploFor2();
         }
     }
 }
