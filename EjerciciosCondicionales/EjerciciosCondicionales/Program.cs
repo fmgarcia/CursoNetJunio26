@@ -1,4 +1,5 @@
 ﻿using System.Runtime.ConstrainedExecution;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EjerciciosCondicionales
 {
@@ -228,13 +229,90 @@ namespace EjerciciosCondicionales
             int num = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine($"El número {num} es {(num % 2 == 0 ? "par" : "impar")}");
         }
+
+        //Programa que lea una variable entera llamada mes y compruebe con una estructura
+        //switch, si el valor corresponde a un mes de 30 días, de 31 o de 28.Supondremos que
+        //febrero tiene 28 días.Se mostrará además de los días, el nombre del mes.Se mostrará
+        //un error cuando el mes no sea válido.
         static void Ejercicio9()
         {
-
+            Console.WriteLine("Indique el número del mes: ");
+            int numMes = Convert.ToInt32(Console.ReadLine());
+            string mes = numMes switch
+            {
+                1 => "Enero, 31 días",
+                2 => "Febrero, 28 días",
+                3 => "Marzo, 31 días",
+                4 => "Abril, 30 días",
+                5 => "Mayo, 31 días",
+                6 => "Junio, 30 días",
+                7 => "Julio, 31 días",
+                8 => "Agosto, 31 días",
+                9 => "Septiembre, 30 días",
+                10 => "Octubre, 31 días",
+                11 => "Noviembre, 30 días",
+                12 => "Diciembre, 31 días",
+                _ => "Mes no válido"
+            };
+            Console.WriteLine(mes);
         }
+        static void Ejercicio9b()
+        {
+            Console.WriteLine("Indique el número del mes: ");
+            int numMes = Convert.ToInt32(Console.ReadLine());
+            int diasMes = numMes switch
+            {
+                1 or 3 or 5 or 7 or 8 or 10 or 12 => 31,
+                2 => 28,
+                4 or 6 or 9 or 11 => 30,
+                _ => 0
+            };
+            string nombreMes = numMes switch
+            {
+                1 => "Enero",
+                2 => "Febrero",
+                3 => "Marzo",
+                4 => "Abril",
+                5 => "Mayo",
+                6 => "Junio",
+                7 => "Julio",
+                8 => "Agosto",
+                9 => "Septiembre",
+                10 => "Octubre",
+                11 => "Noviembre",
+                12 => "Diciembre",
+                _ => "Mes no válido"
+            };
+            Console.WriteLine($"El mes {numMes} es {nombreMes} y tiene {diasMes} días");
+        }
+
+        //Crea un programa que lea una letra tecleada por el usuario y diga si se trata de un
+        //signo de puntuación(. , ; :), una cifra numérica(del 0 al 9) u otro carácter, usando
+        //"switch" (pista: necesitarás usar un dato de tipo "char").
         static void Ejercicio10()
         {
-
+            Console.Write("Presiona cualquier tipo de caracter: ");
+            char c = Console.ReadKey().KeyChar;
+            string tipoCaracter = c switch
+            {
+                ':' or ';' or '.' or ',' => "es un signo de puntuacion",
+                '0' or '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' => "es un numero",
+                _ => "es otro tipo de caracter"
+            };
+            Console.WriteLine($"\n{c} {tipoCaracter}");
+        }
+        static void Ejercicio10b()
+        {
+            Console.Write("Presiona cualquier tipo de caracter: ");
+            char c = Console.ReadKey().KeyChar;
+            string tipoCaracter = c switch
+            {
+                ':' or ';' or '.' or ',' => "es un signo de puntuacion",
+                _ when c >= '0' && c <= '9' => "es un numero",
+                _ when (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == 'ñ' || c == 'Ñ' => "es una letra",
+                _ => "es otro tipo de caracter"
+            };
+            Console.WriteLine($"\n{c} {tipoCaracter}");
         }
         static void Ejercicio11()
         {
@@ -256,9 +334,11 @@ namespace EjerciciosCondicionales
             //Ejercicio5();
             //Ejercicio6();
             //Ejercicio7();
-            Ejercicio8();
+            //Ejercicio8();
             //Ejercicio9();
+            //Ejercicio9b();
             //Ejercicio10();
+            Ejercicio10b();
             //Ejercicio11();
             //Ejercicio12();
         }
