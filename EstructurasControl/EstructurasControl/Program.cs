@@ -469,7 +469,7 @@ namespace EstructurasControl
                 Console.WriteLine($"Bucle infinito con for. Valor de i: {i}");
             }
 
-            int maximo = Int32.MaxValue;
+            int maximo = Int32.MaxValue; // Valor máximo de un entero de 32 bits. 2147483647
             maximo = maximo + 1; // Esto provoca un desbordamiento y vuelve a Int32.MinValue
             Console.WriteLine(maximo);
         }
@@ -495,6 +495,37 @@ namespace EstructurasControl
                 Console.WriteLine("Contraseña incorrecta.");
             }
         }
+
+
+        // Bucles anidados. Son bucles dentro de bucles. Se pueden usar con for, while y do-while.
+
+        static void EjemploTablasMultiplicar()
+        {
+            for (int i = 1; i <= 10; i++)  // Bucle exterior para las tablas del 1 al 10
+            {
+                Console.WriteLine($"Tabla del {i}:");
+                for (int j = 1; j <= 10; j++)  // Bucle interior para multiplicar por 1 al 10
+                {
+                    Console.WriteLine($"{i} x {j} = {i * j}");
+                }
+                Console.WriteLine("-----------------"); // Separador entre tablas
+            }
+        }
+
+        static void PintarAsteriscosAnchoAlto()
+        {
+            int alto = 5;
+            int ancho = 8;
+            for (int fila = 0; fila < alto; fila++)// for exterior
+            {
+                for (int col = 0; col < ancho; col++) // for interior
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine(); // Generamos salto de línea
+            }
+        }
+
 
 
 
@@ -526,7 +557,10 @@ namespace EstructurasControl
             //EjemploContinue();
             //EjemploAnteriorSinContinue();
             //EjemploBucleInfinito1();
-            EjemploBucleInfinito2();
+            //EjemploBucleInfinito2();
+            //EjemploBucleInfinitoConBreak();
+            //EjemploTablasMultiplicar();
+            PintarAsteriscosAnchoAlto();
         }
     }
 }

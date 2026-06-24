@@ -201,13 +201,32 @@ namespace EjerciciosCondicionales
             Console.WriteLine($"El mayor de {n1}, {n2} y {n3} es {mayor}.");
 
         }
+
         static void Ejercicio7()
         {
+            Console.Write("Introduce la hora (0-23): ");
+            int horas = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Introduce los minutos (0-59): ");
+            int minutos = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Introduce los segundos (0-59): ");
+            int segundos = Convert.ToInt32(Console.ReadLine());
 
+            if (horas >= 0 && horas <= 23 &&
+                minutos >= 0 && minutos <= 59 &&
+                segundos >= 0 && segundos <= 59)
+            {
+                Console.WriteLine($"Hora válida: {horas:D2}:{minutos:D2}:{segundos:D2}");
+            }
+            else
+            {
+                Console.WriteLine("Error: hora, minutos o segundos fuera de rango.");
+            }
         }
         static void Ejercicio8()
         {
-
+            Console.WriteLine("Dime un número:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"El número {num} es {(num % 2 == 0 ? "par" : "impar")}");
         }
         static void Ejercicio9()
         {
@@ -235,9 +254,9 @@ namespace EjerciciosCondicionales
             //Ejercicio3();
             //Ejercicio4();
             //Ejercicio5();
-            Ejercicio6();
+            //Ejercicio6();
             //Ejercicio7();
-            //Ejercicio8();
+            Ejercicio8();
             //Ejercicio9();
             //Ejercicio10();
             //Ejercicio11();
