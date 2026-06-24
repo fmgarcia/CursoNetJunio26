@@ -299,6 +299,16 @@ namespace EstructurasControl
             }
         }
 
+        static void EjemploAnteriorConWhile()
+        {
+            int i = 0;
+            while (i < 10)
+            {
+                Console.WriteLine($"El valor de i es {i}");
+                i++;
+            }
+        }
+
         static void EjemploFor2()
         {
             for (int i = 1; i <= 10; i++)
@@ -306,6 +316,187 @@ namespace EstructurasControl
                 Console.WriteLine($"El valor de i es {i}");
             }
         }
+        static void EjemploFor3()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Hola Mundo");
+            }
+        }
+        static void TablaDel7()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                Console.WriteLine($"7 x {i} = {7 * i}");
+            }
+        }
+        static void ParesDel0Al100()
+        {
+            for (int i = 0; i <= 100; i += 2)
+            {
+                Console.WriteLine($"{i} es par");
+            }
+        }
+
+        static void CuentaAtras()
+        {
+            for (int i = 10; i >= 0; i--)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static void BucleForConVariasVariables()
+        {
+            for (int i = 0, j = 10; i <= 10 && j >= 5; i++, j--)  // Se ejecuta 6 veces, i va de 0 a 5 y j de 10 a 5
+            {
+                Console.WriteLine($"i: {i}, j: {j}");
+            }
+        }
+
+        static void EjemploBucleAnteriorConWhile()
+        {
+            int i = 0, j = 10;
+            while (i <= 10 && j >= 5)
+            {
+                Console.WriteLine($"i: {i}, j: {j}");
+                i++;
+                j--;
+            }
+        }
+
+        static void BucleForComoWhile()
+        {
+            int total = 0;
+            for (; total < 100;)
+            {
+                Console.Write($"Escribe un número (acumulado: {total}): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                total += num;
+            }
+            Console.WriteLine($"El total acumulado ha sido {total}");
+        }
+
+        // Ejemplos de foreach
+
+        static void ForEach1ConArray()
+        {
+            int[] array = { 9, 12, 26, 34 };
+            foreach (int num in array)
+            // Recorremos los números de arriba
+            {
+                // En cada repetición, num toma el valor del siguiente número
+                Console.WriteLine(num);
+            }
+        }
+
+        static void ForEach2ConArrayNombres()
+        {
+            string[] nombres = { "Ana", "Luis", "Pedro", "María" };
+            foreach (string nombre in nombres)
+            {
+                Console.WriteLine($"Hola {nombre}");
+            }
+        }
+
+
+        // Break y continue en bucles
+
+        static void EjemploBreak()
+        {
+            int total = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write($"Dime un número del 1 al 10 (total {total}): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                if (num < 1 || num > 10)
+                {
+                    Console.WriteLine("Número no válido");
+                    break;  // Salimos del bucle si el número no es válido
+                }
+                total += num;
+            }
+            Console.WriteLine($"Total acumulado: {total}");
+        }
+
+        static void EjemploAnteriorSinBreak()
+        {
+            int total = 0;
+            bool continuar = true;
+            for (int i = 0; i < 5 && continuar; i++)
+            {
+                Console.Write($"Dime un número del 1 al 10 (total {total}): ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                if (num >= 1 && num <= 10)
+                {
+                    total += num;
+                }
+                else
+                {
+                    continuar = false;  // Marcamos que no queremos continuar
+                    Console.WriteLine("Número no válido");
+                }
+            }
+            Console.WriteLine($"Total acumulado: {total}");
+        }
+
+
+        static void EjemploContinue()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                if (i % 2 > 0)
+                {
+                    continue;
+                }
+                Console.WriteLine($"Repetición número {i}");
+            }
+        }
+        static void EjemploAnteriorSinContinue()
+        {
+            for (int i = 2; i <= 10; i += 2)
+            {
+                Console.WriteLine($"Repetición número {i}");
+            }
+        }
+
+        // Ejemplos de bucles infinitos
+
+        static void EjemploBucleInfinito1()
+        {
+            for (int i = 2147483640; i >= 0; i++)
+            {
+                Console.WriteLine($"Bucle infinito con for. Valor de i: {i}");
+            }
+
+            int maximo = Int32.MaxValue;
+            maximo = maximo + 1; // Esto provoca un desbordamiento y vuelve a Int32.MinValue
+            Console.WriteLine(maximo);
+        }
+
+        static void EjemploBucleInfinito2()
+        {
+            while (true)
+            {
+                Console.WriteLine($"Bucle infinito con while.");
+            }
+        }
+        static void EjemploBucleInfinitoConBreak()
+        {
+            while (true)
+            {
+                Console.WriteLine("Introduce la contraseña:");
+                string contrasena = Console.ReadLine();
+                if (contrasena == "1234")
+                {
+                    Console.WriteLine("Contraseña correcta.");
+                    break;
+                }
+                Console.WriteLine("Contraseña incorrecta.");
+            }
+        }
+
+
 
         static void Main(string[] args)
         {
@@ -320,7 +511,22 @@ namespace EstructurasControl
             //EjemploWhile();
             //EjemploDoWhile();
             //EjemploFor();
-            EjemploFor2();
+            //EjemploFor2();
+            //EjemploFor3();
+            //TablaDel7();
+            //ParesDel0Al100();
+            //CuentaAtras();
+            //BucleForConVariasVariables();
+            //EjemploBucleAnteriorConWhile();
+            //BucleForComoWhile();
+            //ForEach1ConArray();
+            //ForEach2ConArrayNombres();
+            //EjemploBreak();
+            //EjemploAnteriorSinBreak();
+            //EjemploContinue();
+            //EjemploAnteriorSinContinue();
+            //EjemploBucleInfinito1();
+            EjemploBucleInfinito2();
         }
     }
 }
