@@ -180,6 +180,7 @@ namespace Proyecto1606
             Console.Write("Introduce tu edad: ");
             string edad = Console.ReadLine() ?? string.Empty;
             //Console.WriteLine($"Estos son tus datos\n\tnombre: {nombre}\n\tedad: {edad}");
+            // Disponible desde C# 11, permite escribir cadenas multilínea de forma más legible
             Console.WriteLine($"""
                 Estos son tus datos
                     nombre: {nombre}

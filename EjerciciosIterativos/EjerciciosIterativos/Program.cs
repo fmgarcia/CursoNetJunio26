@@ -1,4 +1,6 @@
-﻿namespace EjerciciosIterativos
+﻿using System.IO.Pipelines;
+
+namespace EjerciciosIterativos
 {
     internal class Program
     {
@@ -30,14 +32,34 @@
                 Console.WriteLine($"Total acumulado: {total += anadido}");
             } while (anadido != 0);
         }
+
+        //Pide al usuario un número y calcula cuantas cifras tiene dicho número.Para ello
+        //puedes dividir el número entre 10 hasta que el resultado sea cero.
         static void Ejercicio3()
         {
-
+            Console.WriteLine("Dime un número:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            int num2 = num;
+            int counter = 0;
+            while (num != 0)
+            {
+                num = num / 10;
+                counter++;
+            }
+            Console.WriteLine($"El número {num2} tiene {counter} cifras.");
         }
+
+        // Pide al usuario un número y dibuja una línea con tantos asteriscos como el número introducido.
         static void Ejercicio4()
         {
-
+            Console.WriteLine("Da un número entero: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < num; i++)
+            {
+                Console.Write("*");
+            }
         }
+
         static void Ejercicio5()
         {
 
@@ -68,17 +90,54 @@
                 }
             }
         }
+
+        // Escribe los números del 1 al 9, después del 1 al 8, del 1 al 7, y así sucesivamente en líneas diferentes.
         static void Ejercicio11()
         {
-
+            for (int i = 9; i >= 1; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
         }
+        //Pide al usuario un número y dibuja un cuadrado(mismo alto que ancho) con asteriscos
+        //según el número recibido.
+        //Dime un número: 4
+        //****
+        //****
+        //****
+        //****
         static void Ejercicio12()
         {
-
+            Console.WriteLine("Teclea un número:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= num; i++)
+            {
+                for (int j = 1; j <= num; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
         }
+        //Pide al usuario un número y dibuja una escalera de bajada con asteriscos. La base será
+        //igual al número recibido.
+        //Dime un número: 4
+        //*
+        //**
+        //***
+        //****
         static void Ejercicio13()
         {
-
+            Console.WriteLine("Dime un número:");
+            int ancho_max = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= ancho_max; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                    Console.Write("*");
+                Console.WriteLine();
+            }
         }
         static void Ejercicio14()
         {
@@ -124,7 +183,7 @@
             //Ejercicio10();
             //Ejercicio11();
             //Ejercicio12();
-            //Ejercicio13();
+            Ejercicio13();
             //Ejercicio14();
             //Ejercicio15();
             //Ejercicio16();

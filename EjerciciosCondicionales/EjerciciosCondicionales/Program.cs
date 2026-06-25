@@ -1,4 +1,5 @@
-﻿using System.Runtime.ConstrainedExecution;
+﻿using System.IO.Pipelines;
+using System.Runtime.ConstrainedExecution;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EjerciciosCondicionales
@@ -314,10 +315,163 @@ namespace EjerciciosCondicionales
             };
             Console.WriteLine($"\n{c} {tipoCaracter}");
         }
+
+        //Pide al usuario 2 números.Después muestra al usuario un menú con las siguientes
+        //opciones: 1. Sumar, 2. Restar, 3. Multiplicar, 4. Dividir.Comprueba la opción elegida,
+        //haz la operación y muestra el resultado de la misma.
+        //Si la operación elegida es la división, comprueba que el segundo número(divisor) no
+        //sea cero antes de hacer la operación.
         static void Ejercicio11()
         {
+            Console.WriteLine("Introduce el primer número:");
+            double num1 = double.Parse(Console.ReadLine()!);
+            Console.WriteLine("Introduce el segundo número");
+            double num2 = double.Parse(Console.ReadLine()!);
+            string opcion = string.Empty;
 
+            Console.WriteLine("1.Suma");
+            Console.WriteLine("2.Resta");
+            Console.WriteLine("3.División");
+            Console.WriteLine("4.Multiplicación");
+            Console.WriteLine("5.Salir");
+            opcion = Console.ReadLine()!;
+
+            switch (opcion)
+            {
+                case "1":
+                    Console.WriteLine($"El resultado de la suma es: {num1 + num2}");
+                    break;
+
+                case "2":
+                    Console.WriteLine($"El resultado de la resta es: {num1 - num2}");
+                    break;
+
+                case "3":
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine($"El resultado de la división es: {num1 / num2}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se puede dividir entre 0.");
+                    }
+                    break;
+
+                case "4":
+                    Console.WriteLine($"El resultado de la multiplicación es: {num1 * num2}");
+                    break;
+
+                case "5":
+                    Console.WriteLine("Saliendo del programa.");
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida.");
+                    break;
+            }
         }
+
+        static void Ejercicio11Iterativo()
+        {
+            string opcion = string.Empty;
+
+            do
+            {
+                Console.WriteLine("1.Suma");
+                Console.WriteLine("2.Resta");
+                Console.WriteLine("3.División");
+                Console.WriteLine("4.Multiplicación");
+                Console.WriteLine("5.Salir");
+                opcion = Console.ReadLine()!;
+
+                if (opcion == "5")
+                {
+                    Console.WriteLine("Saliendo del programa.");
+                    break;
+                }
+
+                if (opcion != "1" && opcion != "2" && opcion != "3" && opcion != "4")
+                {
+                    Console.WriteLine("Opción no válida.");
+                    continue;
+                }
+
+                Console.WriteLine("Introduce el primer número:");
+                double num1 = double.Parse(Console.ReadLine()!);
+                Console.WriteLine("Introduce el segundo número");
+                double num2 = double.Parse(Console.ReadLine()!);
+
+                switch (opcion)
+                {
+                    case "1":
+                        Console.WriteLine($"El resultado de la suma es: {num1 + num2}");
+                        break;
+
+                    case "2":
+                        Console.WriteLine($"El resultado de la resta es: {num1 - num2}");
+                        break;
+
+                    case "3":
+                        if (num2 != 0)
+                        {
+                            Console.WriteLine($"El resultado de la división es: {num1 / num2}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("No se puede dividir entre 0.");
+                        }
+                        break;
+
+                    case "4":
+                        Console.WriteLine($"El resultado de la multiplicación es: {num1 * num2}");
+                        break;
+                }
+            } while (opcion != "5");
+        }
+        static void Ejercicio11IterativoSwitchModerno()
+        {
+            string opcion = string.Empty;
+
+            do
+            {
+                Console.WriteLine("1.Suma");
+                Console.WriteLine("2.Resta");
+                Console.WriteLine("3.División");
+                Console.WriteLine("4.Multiplicación");
+                Console.WriteLine("0.Salir");
+                opcion = Console.ReadLine()!;
+
+                if (opcion == "0")
+                {
+                    Console.WriteLine("Saliendo del programa.");
+                    break;
+                }
+
+                if (opcion != "1" && opcion != "2" && opcion != "3" && opcion != "4")
+                {
+                    Console.WriteLine("Opción no válida.");
+                    continue;
+                }
+
+                Console.WriteLine("Introduce el primer número:");
+                double num1 = double.Parse(Console.ReadLine()!);
+                Console.WriteLine("Introduce el segundo número");
+                double num2 = double.Parse(Console.ReadLine()!);
+
+                string mensaje = opcion switch  // switch moderno. Versión de C# 8.0 en adelante. Se puede usar con expresiones lambda, tuplas, patrones, etc.
+                {
+                    "1" => $"El resultado de la suma es: {num1 + num2}",
+                    "2" => $"El resultado de la resta es: {num1 - num2}",
+                    "3" when num2 != 0 => $"El resultado de la división es: {num1 / num2}",
+                    "3" => "No se puede dividir entre 0.",
+                    "4" => $"El resultado de la multiplicación es: {num1 * num2}",
+                };
+
+                Console.WriteLine(mensaje);
+
+            } while (opcion != "5");
+        }
+
         static void Ejercicio12()
         {
 
@@ -338,8 +492,10 @@ namespace EjerciciosCondicionales
             //Ejercicio9();
             //Ejercicio9b();
             //Ejercicio10();
-            Ejercicio10b();
+            //Ejercicio10b();
             //Ejercicio11();
+            //Ejercicio11Iterativo();
+            Ejercicio11IterativoSwitchModerno();
             //Ejercicio12();
         }
     }
