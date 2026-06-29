@@ -299,6 +299,74 @@
             Console.WriteLine(); // banana manzana naranja pera uva (Ordenadas)
         }
 
+        static void ArraysBidimensionales()
+        {
+            int[,] matriz = new int[3, 4]; // Declaración de una matriz de 3 filas y 4 columnas
+            // Asignación de valores a los elementos de la matriz
+            matriz[0, 0] = 1;
+            matriz[0, 1] = 2;
+            matriz[0, 2] = 3;
+            matriz[0, 3] = 4;
+            matriz[1, 0] = 5;
+            matriz[1, 1] = 6;
+            matriz[1, 2] = 7;
+            matriz[1, 3] = 8;
+            matriz[2, 0] = 9;
+            matriz[2, 1] = 10;
+            matriz[2, 2] = 11;
+            matriz[2, 3] = 12;
+            // Recorrer la matriz con bucles anidados
+            for (int i = 0; i < matriz.GetLength(0); i++) // Recorre las filas
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++) // Recorre las columnas
+                {
+                    Console.Write(matriz[i, j] + " "); // Imprime cada elemento de la matriz
+                }
+                Console.WriteLine(); // Salto de línea después de cada fila
+            }
+        }
+        static void ArraysBidimensionales2()
+        {
+            int[,] matriz = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
+            // Recorrer la matriz con bucles anidados
+            for (int i = 0; i < matriz.GetLength(0); i++) // Recorre las filas
+            {
+                for (int j = 0; j < matriz.GetLength(1); j++) // Recorre las columnas
+                {
+                    Console.Write(matriz[i, j] + " "); // Imprime cada elemento de la matriz
+                }
+                Console.WriteLine(); // Salto de línea después de cada fila
+            }
+        }
+
+        static void ArraysEscalonados()  // Arrays escalonados (jagged arrays). Cada fila puede tener un número diferente de columnas
+        {
+            int[][] array2D =
+            {
+                new int[] {12, 3},
+                new int[] {22, 36, 34},
+                new int[] {23, 65, 75, 80},
+                new int[] {1, 4, 7}
+            };
+            for (int i = 0; i < array2D.Length; i++) // array2D.Length (longitud de la 1ª dimensión)
+            {
+                for (int j = 0; j < array2D[i].Length; j++)// array2D[i].Length (longitud de la 2ªdimensión)
+                {
+                    Console.Write(array2D[i][j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void StringComoArray()
+        {
+            string cadena = "Hola mundo";
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                Console.WriteLine($"En la posición {i} hay una '{cadena[i]}'"); // Imprime cada carácter de la cadena
+            }
+        }
+
         static void Main(string[] args)
         {
             //DeclaracionArrays();
@@ -315,9 +383,17 @@
             //BorrarElementosArrays3ConCopyCadenas();
             //InsertarElementoEnUnaPosicionArray();
             //InsertarElementoEnUnaPosicionArray2();
-            OrdenarArraysBurbuja();
-            OrdenarArrays();
-            OrdenarArraysCadenas();
+            //OrdenarArraysBurbuja();
+            //OrdenarArrays();
+            //OrdenarArraysCadenas();
+            //ArraysBidimensionales();
+            //ArraysBidimensionales2();
+            //StringComoArray();
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine($"Argumento {i}: {args[i]}");
+            }
+
         }
     }
 }
