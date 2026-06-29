@@ -130,20 +130,127 @@ namespace EjerciciosArrays
 
         }
 
-        // Dada la siguiente contraseña propuesta por el usuario 1a; te saque 4D.
+        // Dada la siguiente contraseña propuesta por el usuario 1a; te saque 4D:
         // a los números les sume 3 (pero siempre da un número entre 0 y 9)
         // y a las letras les sume 3 , si es mayúscula que se convierta en minúscula y viceversa pero siempre que sea letra. De manera circular, es decir, si es una letra y le sumas 3 y se pasa de z o Z, que vuelva a empezar desde a o A.
         // Los signos de puntuación los cambia con el siguiente de la siguiente forma ( -> ) , ) -> - , - -> _ , _ -> = , = -> + , + -> * , * -> / , / -> ? , ? -> ! , ! -> @ , @ -> # , # -> $ , $ -> % , % -> & , & -> ' , ' -> " , " -> ; , ; -> : , : -> < , < -> > , > -> . , . -> , , , -> (
         static void Codificar()
         {
-
+            const int NUMEROS_SUMAR = 3;
+            const int LETRAS_SUMAR = 3;
+            Console.WriteLine("Introduce la contraseña a codificar:");
+            string? contrasenya_entrada = Console.ReadLine();
+            string contrasenya_codificada = string.Empty;
+            for (int i = 0; i < contrasenya_entrada!.Length; i++)
+            {
+                if (contrasenya_entrada[i] >= '0' && contrasenya_entrada[i] <= '9')
+                {
+                    // Es un número, sumar NUMEROS_SUMAR (con circulación)
+                    int numero = contrasenya_entrada[i] - '0';
+                    numero = (numero + NUMEROS_SUMAR) % 10;
+                    contrasenya_codificada += (char)(numero + '0');
+                }
+                else if (contrasenya_entrada[i] >= 'a' && contrasenya_entrada[i] <= 'z')
+                {
+                    // Es una letra minúscula, convertirla a mayúscula y sumar LETRAS_SUMAR
+                    char letra = char.ToUpper(contrasenya_entrada[i]);
+                    letra = (char)((letra - 'A' + LETRAS_SUMAR) % 26 + 'A');
+                    contrasenya_codificada += letra;
+                }
+                else if (contrasenya_entrada[i] >= 'A' && contrasenya_entrada[i] <= 'Z')
+                {
+                    // Es una letra mayúscula, convertirla a minúscula y sumar LETRAS_SUMAR
+                    char letra = char.ToLower(contrasenya_entrada[i]);
+                    letra = (char)((letra - 'a' + LETRAS_SUMAR) % 26 + 'a');
+                    contrasenya_codificada += letra;
+                }
+                else
+                {
+                    // Es un signo de puntuación, cambiarlo según la tabla
+                    switch (contrasenya_entrada[i])
+                    {
+                        case '(':
+                            contrasenya_codificada += ')';
+                            break;
+                        case ')':
+                            contrasenya_codificada += '-';
+                            break;
+                        case '-':
+                            contrasenya_codificada += '_';
+                            break;
+                        case '_':
+                            contrasenya_codificada += '=';
+                            break;
+                        case '=':
+                            contrasenya_codificada += '+';
+                            break;
+                        case '+':
+                            contrasenya_codificada += '*';
+                            break;
+                        case '*':
+                            contrasenya_codificada += '/';
+                            break;
+                        case '/':
+                            contrasenya_codificada += '?';
+                            break;
+                        case '?':
+                            contrasenya_codificada += '!';
+                            break;
+                        case '!':
+                            contrasenya_codificada += '@';
+                            break;
+                        case '@':
+                            contrasenya_codificada += '#';
+                            break;
+                        case '#':
+                            contrasenya_codificada += '$';
+                            break;
+                        case '$':
+                            contrasenya_codificada += '%';
+                            break;
+                        case '%':
+                            contrasenya_codificada += '&';
+                            break;
+                        case '&':
+                            contrasenya_codificada += '\'';
+                            break;
+                        case '\'':
+                            contrasenya_codificada += '"';
+                            break;
+                        case '"':
+                            contrasenya_codificada += ';';
+                            break;
+                        case ';':
+                            contrasenya_codificada += ':';
+                            break;
+                        case ':':
+                            contrasenya_codificada += '<';
+                            break;
+                        case '<':
+                            contrasenya_codificada += '>';
+                            break;
+                        case '>':
+                            contrasenya_codificada += '.';
+                            break;
+                        case '.':
+                            contrasenya_codificada += ',';
+                            break;
+                        case ',':
+                            contrasenya_codificada += '(';
+                            break;
+                        default:
+                            contrasenya_codificada += contrasenya_entrada[i]; // Si no es un signo de puntuación conocido, lo dejamos igual
+                            break;
+                    }
+                }
+            }
+            Console.WriteLine($"Contraseña codificada: {contrasenya_codificada}");
         }
-
 
         static void Main(string[] args)
         {
             //Ejercicio1();
-            Ejercicio2();
+            //Ejercicio2();
             //Ejercicio3();
             //Ejercicio4();
             //Ejercicio5();
@@ -156,6 +263,7 @@ namespace EjerciciosArrays
             //EjercicioMultidimensionales4();
             //EjercicioMultidimensionales5();
             //EjercicioMultidimensionales6();
+            Codificar();
         }
     }
 }
